@@ -31,3 +31,25 @@ install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local/share"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local/share/applications"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local/share/desktop-directories"
+
+#Install Scriptor
+mkdir "${ROOTFS_DIR}/boot/script/"
+idir="${ROOTFS_DIR}/opt/scriptor"
+mkdir "$idir"
+cp -a files/scriptor/scripts/. "$idir/scripts/"
+cp -a files/scriptor/info/. "${ROOTFS_DIR}/boot/script/"
+sed -ie '$d' ${ROOTFS_DIR}/etc/rc.local
+echo 'python3 /opt/scriptor/scripts/main.py' >> ${ROOTFS_DIR}/etc/rc.local
+echo 'exit 0' >> ${ROOTFS_DIR}/etc/rc.local
+
+#Copy Adafruit WebIDE
+wget https://adafruit-download.s3.amazonaws.com/adafruitwebide-0.3.12-Linux.deb -P files/Adafruit-WebIDE/
+cp -a files/Adafruit-WebIDE/. "${ROOTFS_DIR}/home/pi"
+rm files/adafruitwebide-0.3.12-Linux.deb
+
+#Copy PiShift
+mkdir "${ROOTFS_DIR}/home/pi/piShift/"
+cp -a files/piShift/. "${ROOTFS_DIR}/home/pi/piShift"
+
+#Copy Files to Boot Partion
+cp -a files/boot/. "${ROOTFS_DIR}/boot/"
