@@ -19,9 +19,9 @@ then
   exit
 else
 #Install PiShift
-  cd ${USER_HOME}
+  cd "/home/pi/"
   cd piShift
   sudo ./install.sh
-  cd ${USER_HOME}
+  cd "/home/pi/"
   rm -rf piShift
 fi

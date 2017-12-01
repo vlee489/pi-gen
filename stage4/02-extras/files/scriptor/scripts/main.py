@@ -35,7 +35,7 @@ def updatehost():
     # checks if the file to change hostname exists
     if hostname_file.is_file():
         # If file exists executes bash script
-        os.system('sudo bash /opt/scriptor/updateHostname.sh')
+        os.system('sudo bash /opt/scriptor/scripts/updateHostname.sh')
         # Reboots to apply new Hostname
         print("Rebooting to apply new hostname")
         time.sleep(5)
@@ -49,7 +49,7 @@ def pibot():
     # Checks if pibot.txt exists
     if pibot_file.is_file():
         # If yes, executes install script.
-        os.system('sudo bash /opt/scriptor/pibot.sh')
+        os.system('sudo bash /opt/scriptor/scripts/pibot.sh')
     else:
         print("No Need to Install PiBot")
 
@@ -59,7 +59,7 @@ def pishift():
     # Checks if pishift.txt exists
     if pibot_file.is_file():
         # If yes, executes install script.
-        os.system('sudo bash /opt/scriptor/pishift.sh')
+        os.system('sudo bash /opt/scriptor/scripts/pishift.sh')
     else:
         print("No Need to Install piShift")
 
@@ -67,6 +67,7 @@ def pishift():
 pibot()
 updatehost()
 pishift()
+os.system('sudo service adafruit-webide.sh start')
 bashFile = findfile(pythonLocation, '.sh')
 execute('bash', bashFile)
 time.sleep(1)

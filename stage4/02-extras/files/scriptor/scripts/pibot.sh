@@ -24,15 +24,17 @@ else
 #Install adafruit WebIDE
   echo -e "${BLUE}Installing Adafruit WebIDE${NC}"
   sleep 0.5
-  cd ${USER_HOME}
+  cd "/home/pi/"
+  sleep 1
   sudo dpkg -i adafruitwebide-0.3.12-Linux.deb
   sudo apt-get -f -y install
   sudo service adafruit-webide.sh start
 #Install Unicorn Hat Libaries
-#  sudo pip3 install unicornhat
-#  sudo pip install unicornhat
+  echo -e "${BLUE}Installing Unicorn HAT libaries${NC}"
+  sudo pip3 install unicornhat
+  sudo pip install unicornhat
 #Delete pibot.txt to stop this script being triggered again
   rm -rf /boot/script/pibot.txt
-  cd ${USER_HOME}
+  cd "/home/pi/"
   rm -rf adafruitwebide-0.3.12-Linux.deb
 fi
