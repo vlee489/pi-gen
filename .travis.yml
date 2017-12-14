@@ -13,7 +13,6 @@ script:
 
 # only build up to stage 2. We don't have enough space for NOOBS on travis.
 - touch ./stage5/SKIP
-- rm -f stage{3,4,5}/EXPORT_*
 
 - ./build-docker.sh
 - ls -lahR deploy
