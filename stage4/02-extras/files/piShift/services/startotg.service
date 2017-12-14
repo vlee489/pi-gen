@@ -1,0 +1,12 @@
+[Unit]
+Description=Starts kernel modules for USB OTG
+After=systemd-remount-fs.service
+DefaultDependencies=false
+
+[Service]
+Type=simple
+ExecStart=/opt/pishift/scripts/startmod.sh
+WorkingDirectory=/opt/pishift/
+
+[Install]
+WantedBy=local-fs.target

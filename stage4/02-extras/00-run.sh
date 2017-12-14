@@ -19,11 +19,7 @@ chown 1000:1000 ${ROOTFS_DIR}/home/pi/python_games -Rv
 chmod +x ${ROOTFS_DIR}/home/pi/python_games/launcher.sh
 
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/Documents"
-install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/Documents/BlueJ Projects"
-install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/Documents/Greenfoot Projects"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/Documents/Scratch Projects"
-rsync -a --chown=1000:1000 ${ROOTFS_DIR}/usr/share/doc/BlueJ/ "${ROOTFS_DIR}/home/pi/Documents/BlueJ Projects"
-rsync -a --chown=1000:1000 ${ROOTFS_DIR}/usr/share/doc/Greenfoot/ "${ROOTFS_DIR}/home/pi/Documents/Greenfoot Projects"
 rsync -a --chown=1000:1000 ${ROOTFS_DIR}/usr/share/scratch/Projects/Demos/ "${ROOTFS_DIR}/home/pi/Documents/Scratch Projects"
 
 #Alacarte fixes
@@ -43,9 +39,7 @@ echo 'python3 /opt/scriptor/scripts/main.py' >> ${ROOTFS_DIR}/etc/rc.local
 echo 'exit 0' >> ${ROOTFS_DIR}/etc/rc.local
 
 #Copy Adafruit WebIDE
-wget https://adafruit-download.s3.amazonaws.com/adafruitwebide-0.3.12-Linux.deb -P files/Adafruit-WebIDE/
 cp -a files/Adafruit-WebIDE/. "${ROOTFS_DIR}/home/pi"
-rm files/adafruitwebide-0.3.12-Linux.deb
 
 #Copy PiShift
 mkdir "${ROOTFS_DIR}/home/pi/piShift/"
