@@ -45,5 +45,5 @@ cp -a files/Adafruit-WebIDE/. "${ROOTFS_DIR}/home/pi"
 mkdir "${ROOTFS_DIR}/home/pi/piShift/"
 cp -a files/piShift/. "${ROOTFS_DIR}/home/pi/piShift"
 
-#Copy Files to Boot Partion
+#Copy Files to Boot Partion for wifi etc
 cp -a files/boot/. "${ROOTFS_DIR}/boot/"
