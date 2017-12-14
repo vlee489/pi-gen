@@ -38,6 +38,9 @@ sed -ie '$d' ${ROOTFS_DIR}/etc/rc.local
 echo 'python3 /opt/scriptor/scripts/main.py' >> ${ROOTFS_DIR}/etc/rc.local
 echo 'exit 0' >> ${ROOTFS_DIR}/etc/rc.local
 
+#Blacklist for Unicorn HAT Libary
+echo "blacklist snd_bcm2835" >> ${ROOTFS_DIR}/etc/modprobe.d/snd-blacklist.conf
+
 #Copy Adafruit WebIDE
 cp -a files/Adafruit-WebIDE/. "${ROOTFS_DIR}/home/pi"
 
