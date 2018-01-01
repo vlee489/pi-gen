@@ -36,3 +36,4 @@ npm
 redis-server
 git
 restartd
+ntpdate

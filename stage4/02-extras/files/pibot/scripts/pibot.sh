@@ -29,12 +29,6 @@ else
   sudo dpkg -i adafruitwebide-0.3.12-Linux.deb
   sudo apt-get -f -y install
   sudo service adafruit-webide.sh start
-#Install Unicorn Hat Libaries
-  #echo -e "${BLUE}Installing Unicorn HAT libaries${NC}"
-  #sudo pip3 install unicornhat
-  #sudo pip install unicornhat
-  #echo "blacklist snd_bcm2835" >> /etc/modprobe.d/snd-blacklist.conf
-#Delete pibot.txt to stop this script being triggered again
   rm -rf /boot/script/pibot.txt
   cd "/home/pi/"
   rm -rf adafruitwebide-0.3.12-Linux.deb

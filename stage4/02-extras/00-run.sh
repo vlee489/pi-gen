@@ -28,13 +28,19 @@ install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local/share"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local/share/applications"
 install -v -o 1000 -g 1000 -d "${ROOTFS_DIR}/home/pi/.local/share/desktop-directories"
 
-#Install Scriptor
+#Install Scriptor & Pibot
 mkdir "${ROOTFS_DIR}/boot/script/"
 idir="${ROOTFS_DIR}/opt/scriptor"
+pibotdir="${ROOTFS_DIR}/opt/pibot"
 mkdir "$idir"
+mkdir "$pibotdir"
+cp -a files/pibot/scripts/. "$pibotdir/scripts/"
 cp -a files/scriptor/scripts/. "$idir/scripts/"
+cp -a files/scriptor/updater/. "$idir/updater/"
 cp -a files/scriptor/info/. "${ROOTFS_DIR}/boot/script/"
+cp -a files/pibot/boot/. "${ROOTFS_DIR}/boot/script/"
 sed -ie '$d' ${ROOTFS_DIR}/etc/rc.local
+echo 'python3 /opt/pibot/scripts/main.py' >> ${ROOTFS_DIR}/etc/rc.local
 echo 'python3 /opt/scriptor/scripts/main.py' >> ${ROOTFS_DIR}/etc/rc.local
 echo 'exit 0' >> ${ROOTFS_DIR}/etc/rc.local
 
